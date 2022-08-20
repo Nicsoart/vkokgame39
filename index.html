@@ -113,7 +113,7 @@
     function SetPlayerData(key, data) {
       let reskey = key + "|" + data;
       unityInstance.SendMessage('PlayerManager', 'SetPlayerDataInPlayerPrefs', reskey);
-      console.log("SetPlayerData " + key + ", " data);
+      console.log("SetPlayerData " + key + ", " + data);
     }
 
 
