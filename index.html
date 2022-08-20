@@ -9,7 +9,7 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build129.json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build130.json", {onProgress: UnityProgress});
     </script>
 
 
@@ -99,6 +99,7 @@
 
 // Initialization
     function PlayerInitialization() {
+      console.log("PlayerInitialization");
       unityInstance.SendMessage('PlayerManager', 'LoadStats');
     }
 
