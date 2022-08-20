@@ -9,7 +9,7 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build128.json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build129.json", {onProgress: UnityProgress});
     </script>
 
 
@@ -113,7 +113,7 @@
     function SetPlayerData(key, data) {
       let reskey = key + "|" + data;
       unityInstance.SendMessage('PlayerManager', 'SetPlayerDataInPlayerPrefs', reskey);
-      console.log("SetPlayerData " + key + ", " + data);
+      console.log("SetPlayerData " + key + ", " data);
     }
 
 
