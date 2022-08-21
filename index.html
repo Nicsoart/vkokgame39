@@ -98,11 +98,6 @@
     <script type = "text/javascript" language = "javascript">
 
 // Initialization
-    function PlayerInitialization() {
-      console.log("PlayerInitialization");
-      unityInstance.SendMessage('PlayerManager', 'LoadStats');
-    }
-
     function CheckStats() {
     }
 
@@ -203,8 +198,6 @@
         unityInstance.SendMessage('PlayerManager', 'GetPlayerLanguage', language);
         unityInstance.SendMessage('PlayerManager', 'GetPlayerName', rParams.user_name);
         unityInstance.SendMessage('PlayerManager', 'PlayerAuthorized');
-        console.log("LoadStats");
-        unityInstance.SendMessage('PlayerManager', 'LoadStats');
       },
       function(error) {
       }
