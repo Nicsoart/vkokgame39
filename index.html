@@ -198,7 +198,7 @@
         unityInstance.SendMessage('PlayerManager', 'GetPlayerLanguage', language);
         unityInstance.SendMessage('PlayerManager', 'GetPlayerName', rParams.user_name);
         unityInstance.SendMessage('PlayerManager', 'PlayerAuthorized');
-        unityInstance.SendMessage('VKMechanicsController', 'LoadStats');
+        LoadStats();
       },
       function(error) {
       }
