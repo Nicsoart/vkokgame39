@@ -9,7 +9,7 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build135.json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build136.json", {onProgress: UnityProgress});
     </script>
 
 
@@ -198,6 +198,7 @@
         unityInstance.SendMessage('PlayerManager', 'GetPlayerLanguage', language);
         unityInstance.SendMessage('PlayerManager', 'GetPlayerName', rParams.user_name);
         unityInstance.SendMessage('PlayerManager', 'PlayerAuthorized');
+        unityInstance.SendMessage('PlayerManager', 'LoadStats');
       },
       function(error) {
       }
