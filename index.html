@@ -127,8 +127,12 @@
     function SetPlayerData(key, data) {
       console.log("SetPlayerData " + key + ", " + data);
 
-      var callback = function(res) {
-        console.log(res.success);
+      var callback = function(status, data, error) {
+        if (data) {
+          console.log(data);
+        } else {
+          console.log(error);
+        }
       };
 
       FAPI.Client.call({"method":"storage.set", "key" : key, "value" : data}, callback);
