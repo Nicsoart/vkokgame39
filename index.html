@@ -107,13 +107,13 @@
 
       var callback = function(res) {
         console.log(res.keys);
-        if (typeof res.keys[key] !== "undefined") {
-          var callback_value = function(value) {
-            console.log(value.data);
-            console.log(value.data.lang.String);
-            let reskey = key + "|" + value.data.lang.String;
-            unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
-          };
+        //if (typeof res.keys[key] !== "undefined") {
+        //  var callback_value = function(value) {
+        //    console.log(value.data);
+        //    console.log(value.data.lang.String);
+        //    let reskey = key + "|" + value.data.lang.String;
+        //    unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
+        //  };
           FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback_value);
         }
         else {
