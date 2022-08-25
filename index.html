@@ -108,11 +108,13 @@
       var callback = function(status, data, error) {
         if (data) {
           console.log(data);
+          //if (typeof data.data.)
         } else {
           console.log(error);
         }
       };
-      FAPI.Client.call({"method":"storage.getKeys"}, callback);
+      FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback);
+    //FAPI.Client.call({"method":"storage.getKeys"}, callback);
     }
 
     function SetPlayerData(key, data) {
