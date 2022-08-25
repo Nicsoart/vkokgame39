@@ -107,17 +107,17 @@
 
       var callback = function(res) {
         console.log(res);
-        console.log(res[key]);
-        console.log(res[data]);
-        if (typeof res[key] !== "undefined") {
-          let reskey = key + "|" + res[key];
-          unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
-        } else {
-          unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
-        }
+        //if (typeof res[key] !== "undefined") {
+          //let reskey = key + "|" + res[key];
+          //unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
+        //} else {
+          //unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
+        //}
       };
 
-      FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback);
+      FAPI.Client.call({"method":"storage.getKeys"}, callback);
+
+      //FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback);
     }
 
     function SetPlayerData(key, data) {
