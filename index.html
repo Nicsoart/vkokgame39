@@ -108,6 +108,8 @@
       var callback = function(res) {
         console.log(res);
         console.log(res[key]);
+        console.log(res[]);
+        console.log(res[data]);
         if (typeof res[key] !== "undefined") {
           let reskey = key + "|" + res[key];
           unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
@@ -122,7 +124,11 @@
     function SetPlayerData(key, data) {
       console.log("SetPlayerData " + key + ", " + data);
 
-      FAPI.Client.call({"method":"storage.set", "key" : key, "value" : data});
+      var callback = function(res) {
+        console.log(res)
+      };
+
+      FAPI.Client.call({"method":"storage.set", "key" : key, "value" : data}, callback);
 
       let reskey = key + "|" + data;
       unityInstance.SendMessage('PlayerManager', 'SetPlayerDataInPlayerPrefs', reskey);
