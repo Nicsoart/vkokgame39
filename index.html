@@ -107,7 +107,7 @@
 
       var callback = function(res) {
         console.log(res.keys);
-        if (res.keys.length > 0 && typeof res.keys[key] !== "undefined") {
+        if (typeof res.keys[key] !== "undefined") {
           var callback_value = function(value) {
             console.log(value.data);
             console.log(value.data.lang.String);
