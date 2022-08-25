@@ -103,11 +103,11 @@
 
     function GetPlayerData(key) {
       //unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
-      console.log("GetPlayerData " + key);
+      //console.log("GetPlayerData " + key);
 
       var callback = function(status, data, error) {
         if (data) {
-          console.log(data);
+          //console.log(data);
           if (typeof data.data.key !== "undefined") {
             let reskey = key + "|" + res[key];
             unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
