@@ -102,14 +102,29 @@
     }
 
     function GetPlayerData(key) {
-      unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
+      //unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
       console.log("GetPlayerData " + key);
+
+      var callback = function(res) {
+        console.log(res);
+        //if (typeof res[key] !== "undefined") {
+        //  let reskey = key + "|" + res[key];
+        //  unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
+        //} else {
+        //  unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
+        //}
+      };
+
+      FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback);
     }
 
     function SetPlayerData(key, data) {
+      console.log("SetPlayerData " + key + ", " + data);
+
+      FAPI.Client.call({"method":"storage.set", "key" : key, "value" : data});
+
       let reskey = key + "|" + data;
       unityInstance.SendMessage('PlayerManager', 'SetPlayerDataInPlayerPrefs', reskey);
-      console.log("SetPlayerData " + key + ", " + data);
     }
 
 
