@@ -117,7 +117,6 @@
                       if (typeof data.data[Object.keys(data.data)[0]] !== "undefined") {
                         let reskey = key + "|" + data.data[Object.keys(data.data)[0]];
                         unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
-                        console.log("GetPlayerData: " + key + ", " + data.data[Object.keys(data.data)[0]]);
                       } else {
                         unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
                       }
@@ -139,7 +138,6 @@
     }
 
     function SetPlayerData(key, data) {
-      console.log("SetPlayerData: " + key + ", " + data);
       FAPI.Client.call({"method":"storage.set", "key" : key, "value" : data});
 
       let reskey = key + "|" + data;
