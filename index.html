@@ -118,18 +118,16 @@
                         let reskey = key + "|" + data.data.key;
                         unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
                         console.log("GetPlayerData: " + key + ", " + data.data.key);
-                        break;
                       } else {
                         unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
-                        break;
                       }
                     } else {
                       console.log(error);
                       unityInstance.SendMessage('PlayerManager', 'GetPlayerDataError', key);
-                      break;
                     }
                   };
                   FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback);
+                  break;
                 }
               }
             }
