@@ -115,9 +115,9 @@
                   var callback = function(status, data, error) {
                     if (data) {
                       console.log(data);
-                      console.log(data.key);
-                      console.log(data.data.key);
-                      if (typeof data.data.key !== "undefined") {
+                      console.log(data.data);
+                      console.log(data.data[Object.keys(obj)[0]]);
+                      if (typeof data.data[Object.keys(obj)[0]] !== "undefined") {
                         let reskey = key + "|" + data.data.key;
                         unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
                         console.log("GetPlayerData: " + key + ", " + data.data.key);
