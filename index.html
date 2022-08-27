@@ -102,23 +102,41 @@
     }
 
     function GetPlayerData(key) {
-      var callback = function(status, data, error) {
+      var callbackKeys = function(status, data, error) {
         if (data) {
           console.log(data);
-          if (typeof data.data.key !== "undefined") {
-            let reskey = key + "|" + data.data.key;
-            unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
-            console.log("GetPlayerData: " + key + ", " + data.data.key);
-          } else {
-            unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
+          if (data.keys.length > 0) {
+            for (let i = 0; i <= data.keys.length; i++) {
+              if (i == data.keys.length) {
+                unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
+                break;
+              } else {
+                if (data.keys[i] == key) {
+                  var callback = function(status, data, error) {
+                    if (data) {
+                      if (typeof data.data.key !== "undefined") {
+                        let reskey = key + "|" + data.data.key;
+                        unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
+                        console.log("GetPlayerData: " + key + ", " + data.data.key);
+                        break;
+                      } else {
+                        unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
+                        break;
+                      }
+                    } else {
+                      console.log(error);
+                      unityInstance.SendMessage('PlayerManager', 'GetPlayerDataError', key);
+                      break;
+                    }
+                  };
+                  FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback);
+                }
+              }
+            }
           }
-        } else {
-          console.log(error);
-          unityInstance.SendMessage('PlayerManager', 'GetPlayerDataError', key);
         }
       };
-      FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback);
-    //FAPI.Client.call({"method":"storage.getKeys"}, callback);
+      FAPI.Client.call({"method":"storage.getKeys"}, callbackKeys);
     }
 
     function SetPlayerData(key, data) {
