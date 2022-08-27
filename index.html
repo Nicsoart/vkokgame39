@@ -7,9 +7,9 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>
-    <script src="Build/UnityLoader.js"></script>
+    <script src="Build/061f463856577255fb5eefaf73e67127.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build10.json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/074b6c168e9e6f2822a1b2ceca04117a.json", {onProgress: UnityProgress});
     </script>
 
 
@@ -107,7 +107,7 @@
           if (typeof data.data.key !== "undefined") {
             let reskey = key + "|" + data.data.key;
             unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
-            console.log("GetPlayerData " + reskey);
+            console.log("GetPlayerData: " + key + ", " + data.data.key);
           } else {
             unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
           }
@@ -121,6 +121,7 @@
     }
 
     function SetPlayerData(key, data) {
+      console.log("SetPlayerData: " + key + ", " + data);
       FAPI.Client.call({"method":"storage.set", "key" : key, "value" : data});
 
       let reskey = key + "|" + data;
