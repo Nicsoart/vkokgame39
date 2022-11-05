@@ -117,7 +117,6 @@
                       if (typeof data.data[Object.keys(data.data)[0]] !== "undefined") {
                         let reskey = key + "|" + data.data[Object.keys(data.data)[0]];
                         unityInstance.SendMessage('PlayerManager', 'GetPlayerData', reskey);
-                        console.log('GetPlayerData_' + reskey);
                       } else {
                         unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
                       }
@@ -126,12 +125,13 @@
                       unityInstance.SendMessage('PlayerManager', 'GetPlayerDataError', key);
                     }
                   };
-
                   FAPI.Client.call({"method":"storage.get", "keys" : [key]}, callback);
                   break;
                 }
               }
             }
+          } else {
+            unityInstance.SendMessage('PlayerManager', 'GetPlayerDataFromPlayerPrefs', key);
           }
         }
       };
